@@ -10,7 +10,14 @@
 <!-- User.new(params[:url]) -->
 
 <!-- Display error messages -->
-<p><%= @error_msg if @error_msg %></p>
+<% if @errors %>
+  <p class="error">Invalid input! Please check your input.</p>
+  <ul>
+	<% @errors.each do |error| %>
+		<li class="error"><%= error[0].to_s %>: <%= error[1].join(",") %></li>
+	<% end %>
+  </ul>
+<% end %>
 
 <!-- Display shorten url -->
 <!-- <ul>
@@ -26,7 +33,7 @@
   	<th>Short URL</th>
   	<th>Click Count</th>
   </tr>
-  <% Url.all.each_with_index do |url, i| %>
+  <% @urls.each_with_index do |url, i| %>
 	<tr>
 		<td><%= i + 1 %>.</td>
 	  <td><%= url.long_url %></td>

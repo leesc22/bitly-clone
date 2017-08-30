@@ -21,7 +21,7 @@ post '/urls' do
 	url = Url.create(long_url: params['long_url'])
   if url.invalid?
   	@urls = Url.all
-		@error_msg = url.errors.messages
+		@errors = url.errors.messages
   	erb :"static/index"
   else
 	  redirect "/"	
