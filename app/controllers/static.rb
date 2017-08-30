@@ -19,7 +19,13 @@ post '/urls' do
 	# create a new Url
 	# byebug
 	url = Url.create(long_url: params['long_url'])
-  error_msg = url.errors.messages
+  if url.invalid?
+  	@urls = Url.all
+		@error_msg = url.errors.messages
+  	erb :"static/index"
+  else
+	  redirect "/"	
+  end
 end
 
 # i.e. /g6bda

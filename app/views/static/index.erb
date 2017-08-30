@@ -1,3 +1,4 @@
+<!-- Display form -->
 <form action="/urls" method="post">
 	Enter URL:
 	<input type="text" name="long_url">
@@ -8,25 +9,37 @@
 <!-- User.new(name: params[:name], age: params[:age]) -->
 <!-- User.new(params[:url]) -->
 
+<!-- Display error messages -->
+<p><%= @error_msg if @error_msg %></p>
+
+<!-- Display shorten url -->
 <!-- <ul>
   <% @urls.each do |url| %>
-	<li>Short url: <a href="<%=url.short_url %>" target="_blank"><%=url.short_url %></a></li>
+	<li><a href="<%=url.short_url %>" target="_blank"><%=url.short_url %></a></li>
 	<% end %>
 </ul> -->
 
-
-<!--  <table>
-  <% Url.all.each do |url| %>
+<table>
+  <tr>
+  	<th>No.</th>
+  	<th>Long URL</th>
+  	<th>Short URL</th>
+  	<th>Click Count</th>
+  </tr>
+  <% Url.all.each_with_index do |url, i| %>
 	<tr>
-		<td>Short url: <a href="<%=url.short_url %>" target="_blank"><%=url.short_url %></a></td>
+		<td><%= i + 1 %>.</td>
+	  <td><%= url.long_url %></td>
+		<td><a href="<%= url.short_url %>" target="_blank"><%= url.short_url %></a></td>
+		<td><%= url.click_count%></td>
 	</tr>
  	<% end %>
- </table> -->
+ </table>
 
-<table>
+<!-- <table>
 	<% url = @urls.last %>
 	<tr>
 		<td><a href="<%=url.short_url %>" target="_blank"><%=url.short_url %></a></td>
 	</tr>
-</table>
+</table> -->
 
