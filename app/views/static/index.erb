@@ -1,14 +1,28 @@
 <div id="img-container">
 <!-- Display logo -->
-<h1 id="logo">bitly</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2">
+			<h1 id="logo">bitly</h1>
+		</div>
+	</div>
+</div>
+
 
 <!-- Display form -->
-<form action="/urls" method="post">
-	<!-- Enter URL: -->
-	<input type="text" name="long_url" placeholder="Paste a link to shorten it">
-	<!-- <input type="text" name="url[long_url]"> -->
-	<input type="submit" value="SHORTEN">
-</form>
+<div class="container">
+	<div class="row">
+		<form action="/urls" method="post">
+		<span class="col-xs-9">
+			<input type="text" class="form-control input-lg" name="long_url" placeholder="Paste a link to shorten it" required>
+			<!-- <input type="text" name="url[long_url]"> -->
+		</span>
+		<span class="col-xs-3">
+			<input class="btn btn-primary btn-block btn-lg" type="submit" value="SHORTEN">
+		</span>
+		</form>
+	</div>
+</div>
 
 <!-- User.new(name: params[:name], age: params[:age]) -->
 <!-- User.new(params[:url]) -->

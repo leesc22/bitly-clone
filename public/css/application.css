@@ -20,7 +20,7 @@ body {
 
 form {
 	width: 80%;
-	margin: 20 auto;
+	margin: 20px auto;
 }
 
 .error {
@@ -30,7 +30,7 @@ form {
 table {
 	border-collapse: collapse;
 	width: 80%;
-	margin: 0 auto;
+	margin: 20 auto;
 }
 
 table, th, td {
