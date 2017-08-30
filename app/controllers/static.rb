@@ -18,7 +18,8 @@ end
 post '/urls' do 
 	# create a new Url
 	# byebug
-	Url.create(long_url: params['long_url'])
+	url = Url.create(long_url: params['long_url'])
+  error_msg = url.errors.messages
 end
 
 # i.e. /g6bda
