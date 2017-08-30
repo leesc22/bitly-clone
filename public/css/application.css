@@ -9,7 +9,7 @@ body {
 	background-position: center top;
 	background-attachment: fixed;
 	z-index: -999;
-	height: 60vh;
+	height: 600px;
 }
 
 #logo{
@@ -21,6 +21,16 @@ body {
 form {
 	width: 80%;
 	margin: 20px auto;
+}
+
+.input-lg {
+	height: 45px;
+	border-radius: 6px 0 0 6px;
+}
+
+.btn {
+	margin-left: -32;
+	border-radius: 0 6px 6px 0;
 }
 
 .error {
@@ -37,16 +47,16 @@ table, th, td {
 	border: 1px solid black;
 }
 
+th, td {
+	padding: 5px;
+}
+
 td:nth-child(2) {
 	width: 50%;
 }
 
-td:last-child {
+th:last-child, td:last-child {
 	text-align: center;
-}
-
-th, td {
-	padding: 5px;
 }
 
 tr:hover {
