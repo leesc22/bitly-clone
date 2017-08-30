@@ -1,2 +1,32 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<form action="/urls" method="post">
+	Enter URL:
+	<input type="text" name="long_url">
+	<!-- <input type="text" name="url[long_url]"> -->
+	<input type="submit" value="Submit">
+</form>
+
+<!-- User.new(name: params[:name], age: params[:age]) -->
+<!-- User.new(params[:url]) -->
+
+<!-- <ul>
+  <% @urls.each do |url| %>
+	<li>Short url: <a href="<%=url.short_url %>" target="_blank"><%=url.short_url %></a></li>
+	<% end %>
+</ul> -->
+
+
+<!--  <table>
+  <% Url.all.each do |url| %>
+	<tr>
+		<td>Short url: <a href="<%=url.short_url %>" target="_blank"><%=url.short_url %></a></td>
+	</tr>
+ 	<% end %>
+ </table> -->
+
+<table>
+	<% url = @urls.last %>
+	<tr>
+		<td><a href="<%=url.short_url %>" target="_blank"><%=url.short_url %></a></td>
+	</tr>
+</table>
+
