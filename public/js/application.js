@@ -29,6 +29,12 @@ function tooltip() {
 	});
 }
 
+// Hide and show table using toggle
+function toggleHistoryTable() {
+	$('#toggleHistory').click(function() {
+		$('table').toggle();
+	});
+}
 
 $(document).ready(function() {
 	// delegation - copy to clipboard
@@ -38,8 +44,7 @@ $(document).ready(function() {
 		copyToClipboard($copyTarget);
 	})
 
-  // tooltip
-  tooltip
+  toggleHistoryTable();
 });
 
 
