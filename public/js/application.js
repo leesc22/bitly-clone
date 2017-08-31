@@ -1,42 +1,45 @@
-// Javascript
-// function copyToClipboard(copyTarget) {
-// 	// document.queryCommandSupported('copy') == true
-// 	var temp = document.createElement("input");
-// 	temp.setAttribute("value", copyTarget);
-// 	document.body.appendChild(temp);
-// 	temp.select();
-// 	document.execCommand("copy");
-// 	document.body.removeChild(temp);
-// 	// console.log("copied");
-// }
-
-// function addCopyListener() {
-// 	copyButton = document.getElementsByClassName("copyButton")[0];
-// 	copyTarget = document.getElementsByClassName("copyTarget")[0].href;
-// 	copyButton.addEventListener("click", function() {copyToClipboard(copyTarget)});
-// }
-
-// document.addEventListener('DOMContentLoaded', addCopyListener);
-
-// jQuery
+// Copy to clipboard
 function copyToClipboard(copyTarget) {
 	var $temp = $("<input>");
 	$("body").append($temp);
 	$temp.val(copyTarget.href).select();
 	document.execCommand("copy");
 	$temp.remove();
-	// console.log("copied")
 }
 
+// tooltip
+// Adapted from http://www.alessioatzeni.com/blog/simple-tooltip-with-jquery-only-text/
+function tooltip() {
+	$('.masterTooltip').hover(function() {
+		// Hover over
+		var title = $(this).attr('title');
+		$(this).data('tipText', title).removeAttr('title');
+		$('<p class="tooltip"></p>')
+		.text(title)
+		.appendTo('body')
+		.fadeIn('slow');
+	}, function() {
+		// Hover out
+		$(this).attr('title', $(this).data('tipText'));
+		$('.tooltip').remove();
+	}).mousemove(function(e) {
+		var mousex = e.pageX + 20; // Get X coordinates
+		var mousey = e.pageY + 10; // Get Y coordinates
+		$('.tooltip').css({ top: mousey, left: mousex })
+	});
+}
+
+
 $(document).ready(function() {
-	// $copyButton = $(".copyButton")[0];
-	// $copyTarget = $(".copyTarget")[0];
-	// $($copyButton).on("click", function() {
-	// 	copyToClipboard($copyTarget)});
-	// delegation
+	// delegation - copy to clipboard
 	$('.copy-container').delegate('.copyButton', 'click', function() {
 		var copyButtonSplit = this.id.split('-');
 		$copyTarget = $(".copyTarget")[parseInt(copyButtonSplit[1])];
 		copyToClipboard($copyTarget);
 	})
-})
+
+  // tooltip
+  tooltip
+});
+
+
