@@ -2,6 +2,10 @@ body {
 	margin: 0;
 }
 
+.container {
+	padding: 20px 15px 20px 15px;
+}
+
 #img-container {
 	background-image: url(/img/laptop.jpg);
 	background-repeat: no-repeat;
@@ -9,7 +13,7 @@ body {
 	background-position: center top;
 	background-attachment: fixed;
 	z-index: -999;
-	height: 600px;
+	padding-bottom: 20px;
 }
 
 #logo{
@@ -21,6 +25,7 @@ body {
 form {
 	width: 80%;
 	margin: 20px auto;
+	overflow: auto;
 }
 
 .input-lg {
@@ -28,7 +33,7 @@ form {
 	border-radius: 6px 0 0 6px;
 }
 
-.btn {
+#shorten-button {
 	margin-left: -32;
 	border-radius: 0 6px 6px 0;
 }
@@ -60,5 +65,17 @@ th:last-child, td:last-child {
 }
 
 tr:hover {
-	background-color: #f5f5f5;
+	background-color: #d5d5d5;
+}
+
+.copyLeft {
+	float: left;
+	display: inline;
+	padding: 5px;
+}
+
+.copyRight {
+	float: right;
+	display: inline;
+	margin-right: 5px;
 }
