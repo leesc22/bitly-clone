@@ -37,15 +37,12 @@
   </ul>
 <% end %>
 </div>
+<!-- End of img-container -->
 
-<!-- Display shorten url -->
-<!-- <ul>
-  <% @urls.each do |url| %>
-	<li><a href="<%=url.short_url %>" target="_blank"><%=url.short_url %></a></li>
-	<% end %>
-</ul> -->
 
-<button id="toggleHistory">Hide/Show history</button>
+<!-- Start of history table container -->
+<div id="history-table-container">
+<button id="toggleHistoryButton">Hide/Show history</button>
 
 <table>
   <tr>
@@ -72,11 +69,5 @@
 	</tr>
  	<% end %>
  </table>
-
-<!-- <table>
-	<% url = @urls.last %>
-	<tr>
-		<td><a href="<%=url.short_url %>" target="_blank"><%=url.short_url %></a></td>
-	</tr>
-</table> -->
-
+</div>
+<!-- End of history table container -->

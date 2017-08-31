@@ -42,6 +42,15 @@ form {
 	color: red;
 }
 
+#history-table-container {
+	padding: 20px 0px 20px 0px;
+}
+
+#toggleHistoryButton {
+	margin: auto;
+	display: block;
+}
+
 table {
 	border-collapse: collapse;
 	width: 80%;

@@ -31,7 +31,7 @@ function tooltip() {
 
 // Hide and show table using toggle
 function toggleHistoryTable() {
-	$('#toggleHistory').click(function() {
+	$('#toggleHistoryButton').click(function() {
 		$('table').toggle();
 	});
 }
