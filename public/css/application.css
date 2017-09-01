@@ -73,9 +73,13 @@ th:last-child, td:last-child {
 	text-align: center;
 }
 
-tr:hover {
-	background-color: #d5d5d5;
+tbody tr:nth-child(odd) {
+	background: #eee;
 }
+
+/*tr:hover {
+	background-color: #d5d5d5;
+}*/
 
 .copyLeft {
 	float: left;
@@ -98,4 +102,13 @@ tr:hover {
 	padding: 10px;
 	color: #fff;
 	font-size: 12px Arial;
+}
+
+footer {
+	position: fixed;
+	text-align: center;
+	bottom: 10px;
+	left: 0;
+	right: 0;
+	margin-bottom: 0;
 }

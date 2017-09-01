@@ -14,7 +14,7 @@
 	<div class="row">
 		<form action="/urls" method="post">
 		<div class="col-xs-9">
-			<input type="text" class="form-control input-lg" name="long_url" placeholder="Paste a link to shorten it" required>
+			<input type="url" class="form-control input-lg" name="long_url" placeholder="Paste a link to shorten it" required>
 			<!-- <input type="text" name="url[long_url]"> -->
 		</div>
 		<div class="col-xs-3">
@@ -45,29 +45,35 @@
 <button id="toggleHistoryButton">Hide/Show history</button>
 
 <table>
-  <tr>
-  	<th>No.</th>
-  	<th>Long URL</th>
-  	<th>Short URL</th>
-  	<th>Click Count</th>
-  </tr>
-  <% @urls.each_with_index do |url, i| %>
-	<tr>
-		<td><%= i + 1 %>.</td>
-	  <td><%= url.long_url %></td>
-		<td>
-			<div class="copy-container">
-			<div class="copyLeft">
-				<a class="copyTarget" href="<%= url.short_url %>" target="_blank"><%= url.short_url %></a>
-			</div>
-			<div class="copyRight">
-				<button id="copyButton-<%= i %>" class="btn btn-primary copyButton masterTooltip" title="Copy to clipboard"><i class="fa fa-copy"></i></button>
-			</div>
-			</div>
-		</td>
-		<td><%= url.click_count%></td>
-	</tr>
- 	<% end %>
- </table>
+	<thead>
+	  <tr>
+	  	<th>No.</th>
+	  	<th>Long URL</th>
+	  	<th>Short URL</th>
+	  	<th>Click Count</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <% @urls.each_with_index do |url, i| %>
+		<tr>
+			<td><%= i + 1 %>.</td>
+		  <td><%= url.long_url %></td>
+			<td>
+				<div class="copy-container">
+				<div class="copyLeft">
+					<a class="copyTarget" href="<%= url.short_url %>" target="_blank"><%= url.short_url %></a>
+				</div>
+				<div class="copyRight">
+					<button id="copyButton-<%= i %>" class="btn btn-primary copyButton masterTooltip" title="Copy to clipboard"><i class="fa fa-copy"></i></button>
+				</div>
+				</div>
+			</td>
+			<td><%= url.click_count%></td>
+		</tr>
+	 	<% end %>
+	</tbody>
+</table>
 </div>
 <!-- End of history table container -->
+
+<footer>&copy; 2017 Coded by <a href="https://www.linkedin.com/in/siew-ching-lee-81683156/" target="_blank">SC Lee</a></footer>
