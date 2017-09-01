@@ -1,3 +1,4 @@
+<div id="main-wrapper">
 <div id="img-container">
 <!-- Display logo -->
 <div class="container">
@@ -12,7 +13,7 @@
 <!-- Display form -->
 <div class="container">
 	<div class="row">
-		<form action="/urls" method="post">
+		<form id="url-form" action="/urls" method="post">
 		<div class="col-xs-9">
 			<input type="url" class="form-control input-lg" name="long_url" placeholder="Paste a link to shorten it" required>
 			<!-- <input type="text" name="url[long_url]"> -->
@@ -22,10 +23,22 @@
 		</div>
 		</form>
 	</div>
-</div>
 
 <!-- User.new(name: params[:name], age: params[:age]) -->
 <!-- User.new(params[:url]) -->
+
+<!-- Display shortened link -->
+  <% if @urls.size > 0 %>
+		<div id="mostRecentLink">
+		  <% last_url = @urls.last %>
+			<div><%= last_url.long_url %></div>
+			<div>
+				<a class="recentCopyTarget" href="<%= last_url.short_url%>" target="_blank"><%= last_url.short_url%></a>
+				<button class="btn btn-primary recentCopyButton masterTooltip" title="Copy to clipboard"><i class="fa fa-copy"></i></button>
+			</div>
+		</div>
+	<% end %>
+</div>
 
 <!-- Display error messages -->
 <% if @errors %>
@@ -75,5 +88,6 @@
 </table>
 </div>
 <!-- End of history table container -->
+</div>
 
 <footer>&copy; 2017 Coded by <a href="https://www.linkedin.com/in/siew-ching-lee-81683156/" target="_blank">SC Lee</a></footer>

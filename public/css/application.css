@@ -1,5 +1,13 @@
 body {
+	height: 100%;
 	margin: 0;
+	padding: 0;
+}
+
+#main-wrapper {
+	min-height: 100%;
+	overflow: auto;
+	padding-bottom: 30px;
 }
 
 .container {
@@ -28,14 +36,36 @@ form {
 	overflow: auto;
 }
 
+.row {
+	margin: 0;
+}
+
+form input:focus:invalid {
+	border-color: #b03535;
+	box-shadow: 0 0 5px #d45252;
+	background-color: #fef7f4;
+}
+
+.col-xs-9, .col-xs-3 {
+	padding: 0px;
+}
+
 .input-lg {
 	height: 45px;
 	border-radius: 6px 0 0 6px;
 }
 
 #shorten-button {
-	margin-left: -32;
+	height: 45px;
 	border-radius: 0 6px 6px 0;
+}
+
+#mostRecentLink {
+	background-color: #fff;
+	width: 80%;
+	padding: 10px 16px 10px 16px;
+	margin: 0px auto;
+	border-radius: 1px;
 }
 
 .error {
@@ -105,10 +135,9 @@ tbody tr:nth-child(odd) {
 }
 
 footer {
-	position: fixed;
+	position: relative;
+	margin-top: -30px;
+	height: 30px;
+	clear: both;
 	text-align: center;
-	bottom: 10px;
-	left: 0;
-	right: 0;
-	margin-bottom: 0;
 }

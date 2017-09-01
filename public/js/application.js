@@ -29,11 +29,27 @@ function tooltip() {
 	});
 }
 
-// Hide and show table using toggle
+// Hide and show table using toggle with blind effect
 function toggleHistoryTable() {
 	$('#toggleHistoryButton').click(function() {
 		$('table').toggle('blind');
 	});
+}
+
+// Implement an Asynchronous Bitly Submission
+function ajaxSubmit() {
+  $('#url-form').submit(function(event) {
+  	event.preventDefault();
+  	$ajax({
+  		url: '/urls',
+  		method: 'POST',
+  		data: $(this).serialize(),
+  		dataType: 'json',
+  		success: function(data) {
+  			// code to display shortened url
+  		}
+  	});
+  });
 }
 
 $(document).ready(function() {
@@ -44,7 +60,17 @@ $(document).ready(function() {
 		copyToClipboard($copyTarget);
 	})
 
+	// copy to clipboard - one element
+	$recentCopyButton = $(".recentCopyButton")[0];
+	$recentCopyTarget = $(".recentCopyTarget")[0];
+	$($recentCopyButton).on("click", function() {
+		copyToClipboard($recentCopyTarget);
+	});
+
   toggleHistoryTable();
+
+  // Implement an Asynchronous Bitly Submission
+  ajaxSubmit();
 });
 
 

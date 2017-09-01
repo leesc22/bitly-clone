@@ -11,7 +11,7 @@ get '/' do
 	# {"long_url"=>"https://code.nextacademy.com/courses/web-development-bootcamp/lessons/bitly-building-our-first-web-app", "captures"=>[]}
 
 	# let user create new short URL, display a list of shortened URLs
-	@urls = Url.all
+	@urls = Url.order(:id)
   erb :"static/index"
 end
 
