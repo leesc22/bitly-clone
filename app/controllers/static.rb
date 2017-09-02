@@ -20,11 +20,13 @@ post '/urls' do
 	# byebug
 	url = Url.create(long_url: params['long_url'])
   if url.invalid?
-  	@urls = Url.all
+  	@urls = Url.order(:id)
 		@errors = url.errors.messages
-  	erb :"static/index"
+  	# erb :"static/index" # commented out for json
+		@errors.to_json
   else
-	  redirect "/"	
+	  # redirect "/"	# commented out for json
+	  url.to_json
   end
 end
 

@@ -9,7 +9,6 @@
 	</div>
 </div>
 
-
 <!-- Display form -->
 <div class="container">
 	<div class="row">
@@ -28,13 +27,24 @@
 <!-- User.new(params[:url]) -->
 
 <!-- Display shortened link -->
+  <% if @urls.size == 0 %>
+		<div id="mostRecentLink">
+		  <%# last_url = @urls.last %>
+			<div id="recentLongUrl"><%#= last_url.long_url %></div>
+			<div>
+				<a id="recentCopyTarget" href="<%#= last_url.short_url%>" target="_blank"><%#= last_url.short_url%></a>
+				<button id="recentCopyButton" class="btn btn-primary masterTooltip" title="Copy to clipboard"><i class="fa fa-copy"></i></button>
+			</div>
+		</div>
+	<% end %>
+
   <% if @urls.size > 0 %>
 		<div id="mostRecentLink">
 		  <% last_url = @urls.last %>
-			<div><%= last_url.long_url %></div>
+			<div id="recentLongUrl"><%= last_url.long_url %></div>
 			<div>
-				<a class="recentCopyTarget" href="<%= last_url.short_url%>" target="_blank"><%= last_url.short_url%></a>
-				<button class="btn btn-primary recentCopyButton masterTooltip" title="Copy to clipboard"><i class="fa fa-copy"></i></button>
+				<a id="recentCopyTarget" href="<%= last_url.short_url%>" target="_blank"><%= last_url.short_url%></a>
+				<button id="recentCopyButton" class="btn btn-primary masterTooltip" title="Copy to clipboard"><i class="fa fa-copy"></i></button>
 			</div>
 		</div>
 	<% end %>
@@ -54,6 +64,7 @@
 
 
 <!-- Start of history table container -->
+<%# if @urls.size > 0 %>
 <div id="history-table-container">
 <button id="toggleHistoryButton">Hide/Show history</button>
 
@@ -87,6 +98,7 @@
 	</tbody>
 </table>
 </div>
+<%# end %>
 <!-- End of history table container -->
 </div>
 

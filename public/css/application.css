@@ -68,6 +68,10 @@ form input:focus:invalid {
 	border-radius: 1px;
 }
 
+#mostRecentLink div {
+	padding: 5px;
+}
+
 .error {
 	color: red;
 }
@@ -85,6 +89,10 @@ table {
 	border-collapse: collapse;
 	width: 80%;
 	margin: 20 auto;
+}
+
+tbody:empty {
+	display: none;
 }
 
 table, th, td {
