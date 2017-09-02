@@ -47,7 +47,7 @@ function ajaxSubmit() {
   		data: $(this).serialize(),
   		// dataType: 'json',
   		success: function(data) {
-  			alert("success");
+  			// alert("success");
   			var json = JSON.parse(data);
   			console.log('success', json);
   			if ($('table > tbody > tr').length == 0) {
@@ -78,6 +78,50 @@ function ajaxSubmit() {
   });
 }
 
+// Implement an Asynchronous Bitly Paste Event
+function ajaxPaste() {
+  $('#url-form').on('paste', function(event) {
+  	var $self = $(this);
+  	setTimeout(function() {
+	  	$.ajax({
+	  		// cache: false,
+	  		url: '/urls',
+	  		method: 'POST',
+	  		data: $self.serialize(),
+	  		// dataType: 'json',
+	  		success: function(data) {
+	  			// alert("success");
+	  			var json = JSON.parse(data);
+	  			console.log('success', json);
+	  			if ($('table > tbody > tr').length == 0) {
+						$('#history-table-container').css('display', 'block');
+						$('#mostRecentLink').css('display', 'block');
+					}
+
+	  			// code to display shortened url
+	  			$('#recentLongUrl').html(json.long_url);
+	  			$('#recentCopyTarget').prop('href', json.short_url);
+	  			$('#recentCopyTarget').html(json.short_url);
+
+	  			// append new row to table
+	  			$('table tbody').append("<tr><td>" + json.id + ".</td><td>" + json.long_url + "</td><td><div class='copy-container'><div class='copyLeft'><a class='copyTarget' href='" + json.short_url + "' target='_blank'>" + json.short_url + "</a></div><div class='copyRight'><button id='copyButton-" + json.id + "' class='btn btn-primary copyButton masterTooltip' title='Copy to clipboard'><i class='fa fa-copy'></i></button></div></div></td><td>" + json.click_count + "</td></tr>");
+	  			$('#copyButton-' + json.id).on("click", function() {
+						copyToClipboard($('.copyTarget')[parseInt(json.id) - 1]);
+					});
+	  		},
+	  		error: function(jqXHR, textStatus, errorThrown) {
+	  			// alert('error');
+	  			// var json = jqXHR.responseJSON;
+	  			// console.log(json);
+	  			console.log(textStatus, errorThrown);
+				}
+	  	});
+			// clear form
+			$('#url-form')[0].reset();
+  	}, 500);
+  });
+}
+
 $(document).ready(function() {
 	// hide thead if tbody empty
 	if ($('table > tbody > tr').length == 0) {
@@ -87,6 +131,7 @@ $(document).ready(function() {
 
   // Implement an Asynchronous Bitly Submission
   ajaxSubmit();
+  ajaxPaste();
 
 	// delegation - copy to clipboard
 	$('.copy-container').delegate('.copyButton', 'click', function() {
