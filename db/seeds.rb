@@ -17,3 +17,16 @@ Url.transaction do
   columns = [:long_url, :short_url]
   Url.import columns, urls, validate: true
 end
+
+# Url.connection.index_exists? :urls, :short_url
+# returns true if index exists
+
+# Alternative - faster
+# data_string = "INSERT INTO urls (ori_url,short_url,click_count) VALUES "
+# values = File.read("urls")
+# values = values.tr("();\n",'').split(",").each do |x|
+#          data_string << "('" + x.strip + "','" + SecureRandom.hex(7) + "','" + "0'),"
+#        end
+# data_string.chomp!(",")
+# data_string << ";"
+# Url.connection.execute(data_string)
