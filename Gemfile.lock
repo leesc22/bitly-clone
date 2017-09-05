@@ -7,6 +7,8 @@ GEM
       activemodel (= 5.1.1)
       activesupport (= 5.1.1)
       arel (~> 8.0)
+    activerecord-import (0.19.1)
+      activerecord (>= 3.2)
     activesupport (5.1.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
@@ -78,6 +80,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  activerecord-import
   activesupport
   byebug
   pg
@@ -91,5 +94,8 @@ DEPENDENCIES
   sinatra-contrib
   thin
 
+RUBY VERSION
+   ruby 2.4.1p111
+
 BUNDLED WITH
-   1.15.1
+   1.15.4

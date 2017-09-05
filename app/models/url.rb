@@ -3,6 +3,7 @@ class Url < ActiveRecord::Base
 	validates :long_url, format: { with: URI.regexp }, allow_blank: true
 	validates :short_url, uniqueness: true
   before_create :shorten_url
+  before_save :shorten_url
 
 	# return a string of random alpha-numeric characters
 	def shorten_url

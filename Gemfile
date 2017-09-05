@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Ruby Version
-ruby "2.3.4"
+ruby "2.4.1"
 
 # Adding Sinatra Drivers
 gem 'sinatra'
@@ -12,6 +12,7 @@ gem 'thin'
 
 # Adding ActiveRecord and Database Components
 gem 'activerecord'
+gem 'activerecord-import'
 gem 'activesupport'
 gem 'sinatra-activerecord'
 
