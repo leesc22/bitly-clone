@@ -122,8 +122,18 @@ function ajaxPaste() {
   });
 }
 
+// Only works if user click the link
+// FIXME to increment when short link is used
+// function updateClickCount() {
+// 	$('a').on('click', function() {
+// 		var $shortUrl = $(this);
+// 		var $previousClickCount = $shortUrl.parents().eq(2).next();
+// 		$previousClickCount.html(parseInt($previousClickCount.html()) + 1);
+// 	});
+// }
+
 $(document).ready(function() {
-	// hide thead if tbody empty
+	// hide thead and most recent container if tbody empty
 	if ($('table > tbody > tr').length == 0) {
 		$('#history-table-container').css('display', 'none');
 		$('#mostRecentLink').css('display', 'none');
@@ -132,6 +142,7 @@ $(document).ready(function() {
   // Implement an Asynchronous Bitly Submission
   ajaxSubmit();
   ajaxPaste();
+  // updateClickCount();
 
 	// delegation - copy to clipboard
 	$('.copy-container').delegate('.copyButton', 'click', function() {
